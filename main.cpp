@@ -87,7 +87,7 @@ int main() {
 //n points to a newly created node
  n = new node();
 
- //if I do n, it is the pointer. if I do (*n), it is now the VALUE of the where the pointer points. It is now the the VALUE of WHAT is in the memory. 
+
 
  n->data=1;
 
