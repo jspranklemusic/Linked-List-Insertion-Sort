@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 
+//insertion sort
 std::vector<int> sortNumsAscending(std::vector<int> arr) {
 	int i = 1;
 	while( i < arr.size()){
@@ -18,7 +19,7 @@ std::vector<int> sortNumsAscending(std::vector<int> arr) {
 	return arr;
 };
 
-
+//linked list
 struct node{
    //this stores the value of the list item
    int data;
@@ -73,7 +74,7 @@ struct node{
 
 
 int main() {
-  //a struct is a custom data type
+
  
 
  //this is a pointer to a node
@@ -96,10 +97,9 @@ int main() {
 //AGAIN, we are changing what n is pointing to.
  n = new node();
  n->data = 2;
-//aha AHA! This is what I didn't get. 't' now points to the new node.
    t->next=n;
    t = t->next;
-//
+	
   n = new node();
    n->data = 3;
    t->next=n;
