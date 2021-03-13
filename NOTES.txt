@@ -1,0 +1,149 @@
+INTRO TO DATA STRUCTURES
+a way to store information efficiently
+We can talk about models.
+
+/////////////////////////////////////////////////
+1. MODELS
+
+ Mathematical/logical models are abstract
+
+Abstract data types: (ADT)
+-store a given number of elements of any types
+-read elements by position
+-modify element at position
+-define data and operations, but not implementation
+
+Arrays,
+Linked List,
+Stack,
+Queue,
+Tree,
+Graph
+
+2. Implementations are conrcrete
+
+
+1. Logical view
+2. operations
+3. Cost
+4. Implementations
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+///////////////////////////////////////////////////
+2. BASIC LIST:
+A collection of data of the same type.
+Basic list: store number of elements of a given data type
+Should be able to write/modify/read
+Should be empty if no items in the list,
+You should be able to insert an element in the list,
+Count the elements in the list,
+Read or write or modify elements at a particular position,
+Specify the data type
+
+in c++:
+int arr[] {1,2,3,4,5};
+
+HOW TO IMPLEMENT WITH BASIC ARRAYS IN C?
+1. Make a super big array
+
+int arr[BIG SIZE];
+int end = -1;
+
+number of elements in the list? n+1.
+copy array into new array.
+
+HOW MUCH TIME DOES IT TAKE TO ACCESS AN ELEMENT?
+o(1)
+HOW MUCH TIME DOES IT TAKE TO INSERT AN ELEMENT?
+o(n)
+HOW MUCH TIME TO ADD?
+o(n)
+In other words, a linear relationship between the time and length.
+
+/////////////////////////////////////////////////////
+3. LINKED LIST
+
+memory is a crucial resource. Computers have a memory manager.
+The programmer sees a declaration of a variable, 
+stores it in memory. Integers are 4 bytes, so it is stored
+in 4 bytes of free space.
+
+||||||||[////adr:217]||||||||
+
+Array is always stored as 1 contiguous block of memory. 
+So the memory is always consistent. You need a specific length.
+
+Using the index arr[3], the memory manager can calculate
+the address of the memory. Let's say 201 + 34.
+
+[4////][1////][2////]||||||||||||
+You can't extend it. Only create new block, and erase old block.
+
+...SO FOR THE LINKED LIST:
+You store two parts in each block?
+
+1. First block is the value, [4]
+2. Second block is the memory address? [20012]
+For last block, store address as "0" to indicate last.
+
+This node would have 8 bytes. It is linked list, because it stores data in 1st space, and memory reference in next space. The first node is the head node. The address of the head node accesses the list, address of the last node is 0. 
+
+EACH 2nd SPACE POINTS TO THE POSITION OF THE NEXT 1ST SPACE
+
+[6][217]    [2][220]       [3][299]
+head, 204     --> 217         220
+
+time complexity is o(n)
+
+/////////////////////////////////////////////////////
+4. LINKED LIST IMPLEMENTATION IN C
+Array vs linked list?
+
+Array is in one block of memory, Linked List is not.
+
+What is the cost of inserting an element into the list?
+  a. At the beginning
+  b. In the middle
+  c. In the end
+
+In the case of an array, you have to shift all the other elements if you insert an element. 
+
+For a linked list, the only cost is making a new head node and making it point to the old head node. 
+
+Array is easier to use. Linked list is difficult, error prone.  Segmentation fault and memory leak.
+But... linked list is more powerful. 
+
+DESCRIPTION: "...In a linked list, data is stored in non-contiguous blocks of memory, referred to as nodes."
+
+C++ syntax: a struct allows the programmer to create a custom data type. You can store different properties in a struct, and you can store multiple types in a struct.
+
+
+
+////
+
+ struct node{
+    int data;
+    node* link;
+  };
+  node* A;
+  A=NULL;
+  // node* temp = (node*)malloc(sizeof(node));
+  node* temp = new node();
+  (*temp).data = 2;
+  (*temp).link = NULL;
+  A = temp;
+  temp = new node();
+  (*temp).data = 4;
+  (*temp).link = NULL;
+  node* temp1 = A;
+
+  while((*temp1).link !=NULL){
+    temp1 = (*temp1).link;
+  };
+  (*temp1).link = temp;
+
+  ///
+
+
+  ////////////////////////////////
+  INSERT NODE AT BEGINNING OF LIST
